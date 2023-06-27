@@ -23,10 +23,13 @@ void execute_command(char *command, char **env)
 	}
 	else if (_strcmp(argv[0], "exit") == 0)
 	{
-		exit(0);
+		free(command);
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
 		execute_external_command(argv, env);
 	}
+
+	free(command);
 }

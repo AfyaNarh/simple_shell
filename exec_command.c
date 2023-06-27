@@ -24,21 +24,43 @@ void execute_external_command(char **argv, char **env)
 	pid_t child_pid;
 	int status;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	if (access(argv[0], X_OK) == 0)
 	{
-		exit(EXIT_FAILURE);
-	}
-	if (child_pid == 0)
-	{
-		if (execve(argv[0], argv, env) == -1)
+		child_pid = fork();
+		if (child_pid == -1)
 		{
-			char error[] = "%s: No such file or directory\n";
-
-			write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
-			write(STDOUT_FILENO, error, _strlen(error));
+			perror("fork");
+			exit(EXIT_FAILURE);
 		}
-		exit(EXIT_FAILURE);
+		if (child_pid == 0)
+		{
+			if (execve(argv[0], argv, env) == -1)
+			{
+				char error[] = " % s : No such file or directory\n";
+
+				write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
+				write(STDOUT_FILENO, error, _strlen(error));
+				exit(EXIT_FAILURE);
+			}
+		}
+		else
+		{
+			wait(&status);
+		}
 	}
-	wait(&status);
+	else if (access(argv[0], F_OK) == 0)
+	{
+		char error[] = " % s : Permission denied\n";
+
+		write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
+		write(STDOUT_FILENO, error, _strlen(error));
+	}
+	else
+	{
+		char error[] = "%s: command not found\n";
+
+		write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
+		write(STDOUT_FILENO, error, _strlen(error));
+	}
 }
+
