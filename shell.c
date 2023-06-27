@@ -12,4 +12,3 @@ int main(int ac, char **av, char **env)
 		prompt_command(av, env);
 	return (0);
 }
-

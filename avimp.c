@@ -2,8 +2,9 @@
 #define BUFFER_SIZE 256
 
 /**
- * check_path - Check if the command is in the PATH environment variable
- * @command: The command to check
+ * check_path - handles the path
+ * @command: name of the command to be checked
+ * Return: NULL
  */
 void check_path(const char *command)
 {
@@ -28,5 +29,3 @@ void check_path(const char *command)
 		dir = strtok(NULL, ":");
 	}
 }
-
-
