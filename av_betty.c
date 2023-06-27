@@ -11,10 +11,10 @@ int sum_numb(int a, int v)
 }
 
 /**
- * main - Entry point.
+ * custom_main - Entry point.
  * Return: Always 0.
  */
-int main(void)
+int custom_main(void)
 {
 	int num1 = 9;
 	int num2 = 11;
@@ -23,14 +23,13 @@ int main(void)
 	char buffer[20];
 	int length = 0;
 	int temp = result;
+	int i;
 
 	do {
 		temp /= 10;
 		length++;
 	} while (temp != 0);
-
-	int i = length;
-
+	i = length;
 	while (result != 0)
 	{
 		buffer[--i] = '0' + (result % 10);
@@ -43,4 +42,3 @@ int main(void)
 
 	return (0);
 }
-

@@ -23,7 +23,7 @@ void execute_command(char *command, char **env);
 void print_environment_variables(char **env);
 void execute_external_command(char **argv, char **env);
 char* my_getline(void);
-int main(void);
+int custom_main(void);
 int sum_numb(int a, int v);
 
 #endif
