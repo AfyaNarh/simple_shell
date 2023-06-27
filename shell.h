@@ -22,7 +22,7 @@ int _strcmp(const char *st1, const char *st2);
 void execute_command(char *command, char **env);
 void print_environment_variables(char **env);
 void execute_external_command(char **argv, char **env);
-char* my_getline(void);
+char *my_getline(void);
 int custom_main(void);
 
 #endif
