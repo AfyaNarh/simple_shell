@@ -39,6 +39,5 @@ int custom_main(void)
 	write(STDOUT_FILENO, "The sum is: ", 12);
 	write(STDOUT_FILENO, buffer, length);
 	write(STDOUT_FILENO, "\n", 1);
-
 	return (0);
 }
