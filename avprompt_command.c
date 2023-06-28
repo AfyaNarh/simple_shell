@@ -21,15 +21,8 @@ void prompt_command(char **av, char **env)
 		character = getline(&string, &n, stdin);
 		if (character == -1)
 		{
-			perror("Error:getline failed");
 			free(string);
 			exit(EXIT_FAILURE);
-		}
-		else if (character == 0)
-		{
-			free(string);
-			write(STDOUT_FILENO, &_newline, 1);
-			exit(EXIT_SUCCESS);
 		}
 		while (string[a])
 		{
