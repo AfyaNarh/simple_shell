@@ -45,27 +45,3 @@ void exit_shell(int status)
 	_exit(status);
 }
 
-/**
- * main - Entry point.
- *
- * Return: Always 0.
- */
-int main(void)
-{
-	char input[100];
-	int status = 0;
-
-	read_wrapper(STDIN_FILENO, input, sizeof(input));
-	int i = 0;
-
-	while (input[i] != '\0' && input[i] != '\n')
-	{
-		status = (status * 10) + (input[i] - '0');
-		i++;
-	}
-
-	exit_shell(status);
-
-	return (0);
-}
-
