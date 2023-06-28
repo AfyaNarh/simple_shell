@@ -24,5 +24,5 @@ void print_environment_variables(char **env);
 void execute_external_command(char **argv, char **env);
 char *my_getline(void);
 int custom_main(void);
-
+int customed_main(void);
 #endif
