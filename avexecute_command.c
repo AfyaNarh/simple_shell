@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * execute_command - Execute a shell command
  * @command: The command to execute
@@ -7,33 +6,27 @@
  */
 void execute_command(char *command, char **env)
 {
-	int status;
-	pid_t pid = fork();
+	char *argv[Max_Command];
+	int b = 0;
 
-	if (pid == -1)
+	argv[b] = strtok(command, " ");
+
+	while (argv[b])
 	{
-		perror("Error: Fork failed");
-		exit(EXIT_FAILURE);
+		b++;
+		argv[b] = strtok(NULL, " ");
 	}
-	else if (pid == 0)
-	{
-		char *argv[2];
 
-		argv[0] = command;
-		argv[1] = NULL;
-		if (execve(command, argv, env) == -1)
-		{
-			perror("Error: Execve failed");
-			exit(EXIT_FAILURE);
-		}
+	if (_strcmp(argv[0], "env") == 0)
+	{
+		print_environment_variables(env);
+	}
+	else if (_strcmp(argv[0], "exit") == 0)
+	{
+		exit(0);
 	}
 	else
 	{
-		if (waitpid(pid, &status, 0) == -1)
-		{
-			perror("Error: Waitpid failed");
-			exit(EXIT_FAILURE);
-		}
+		execute_external_command(argv, env);
 	}
 }
-

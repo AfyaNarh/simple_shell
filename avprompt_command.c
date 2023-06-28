@@ -30,13 +30,7 @@ void prompt_command(char **av, char **env)
 				string[a] = '\0';
 			a++;
 		}
-		if (_strcmp(string, "quit") == 0)
-		{
-			free(string);
-			break;
-		}
 		execute_command(string, env);
 	}
-
 	free(string);
 }
