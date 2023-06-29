@@ -21,6 +21,6 @@ void tokenizeString(char *string, char **args);
 void runShell(void);
 int _strcmp(const char *st1, const char *st2);
 int _strlen(const char *s);
-
+void cd_command(char* directory);
 
 #endif
