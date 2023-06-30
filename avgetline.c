@@ -35,13 +35,10 @@ ssize_t our_getline(char **linebuffer, size_t *m, FILE *stream)
 		{
 			*m *= 2;
 			fornow = malloc(*m);
-
 			if (fornow == NULL)
 				return (-1);
-
 			for (i = 0; i < status; i++)
 				fornow[i] = (*linebuffer)[i];
-
 			free(*linebuffer);
 			*linebuffer = fornow;
 		}
@@ -49,7 +46,6 @@ ssize_t our_getline(char **linebuffer, size_t *m, FILE *stream)
 	}
 	if (readbytes == 0 && status == 0)
 		return (-1);
-
 	(*linebuffer)[status] = '\0';
 	return (status);
 }
@@ -65,13 +61,11 @@ char *my_getline(void)
 	ssize_t line_length;
 
 	line_length = our_getline(&line, &line_size, stdin);
-
 	if (line_length == -1)
 	{
 		free(line);
 		return (NULL);
 	}
-
 	return (line);
 }
 
@@ -84,9 +78,7 @@ int mycustom_main(void)
 	char *line = my_getline();
 
 	printf("Input: %s\n", line);
-
 	free(line);
-
 	return (0);
 }
 
