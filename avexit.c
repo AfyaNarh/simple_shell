@@ -61,3 +61,19 @@ int my_custom_main(void)
 
 	return (0);
 }
+
+/**
+ * main - Entry point of the program
+ *
+ * This function serves as the entry point of the program. It calls the
+ * `my_custom_main` function, which contains the main logic of the shell.
+ * After `my_custom_main` completes, the program returns 0 to indicate
+ * successful execution.
+ *
+ * Return: 0 on successful completion
+ */
+int main(void)
+{
+	my_custom_main();
+	return (0);
+}

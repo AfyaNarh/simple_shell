@@ -1,5 +1,5 @@
-#ifndef SHELL_H_
-#define SHELL_H_
+#ifndef sSHELL_H_
+#define sSHELL_H_
 
 
 #include <stdio.h>
@@ -22,5 +22,7 @@ void runShell(void);
 int _strcmp(const char *st1, const char *st2);
 int _strlen(const char *s);
 void cd_command(char* directory);
+int my_custom_main(void);
+void handle_exit(char *args);
 
 #endif
