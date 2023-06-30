@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
+#include "shell.h"
 /**
  * our_getline - Reads a line of input from a file stream
  * @linebuffer: Pointer to the buffer containing the line
